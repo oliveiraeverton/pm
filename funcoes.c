@@ -14,6 +14,13 @@ void menu(){
     printf("Escolha uma opção: ");
 }
 
+void menuTipoViatura(){
+    limparTela();
+    printf("1- Polícia Regular\n");
+    printf("2- Polícia Especializada\n");
+    printf("3- Voltar Para Menu Principal\n");
+    printf("Escolha uma opção: ");
+}
 
 void menuViatura(){
     limparTela();
@@ -23,13 +30,7 @@ void menuViatura(){
     printf("Escolha uma opção: ");
 }
 
-void menuTipoViatura(){
-    limparTela();
-    printf("1- Polícia Regular\n");
-    printf("2- Polícia Especializada\n");
-    printf("3- Voltar Para Menu Principal\n");
-    printf("Escolha uma opção: ");
-}
+
 
 void menuCopom(){
     limparTela();
@@ -74,17 +75,20 @@ void leituraDadosViaturaLogin(char *codigoViatura, int *quantidadePM){
 }
 
 int validacaoQuantidadePM(int tipoViatura, int quantidadePM, struct viatura *viat, char *codigoViatura){
+    
     if(tipoViatura == 1){
-        if(quantidadePM >= 2 && quantidadePM <= 4){
-            // faz as atribuições para a viatura assim como os nomes de guerras
-            return 0;
+        if(quantidadePM >= 2 || quantidadePM <= 4){
+            printf("Quantidade de PM válido -- REGULAR\n");
+            //atribui a viat o cod e os nomes de guerras
+            return 1;
         }
     }else{
         if(quantidadePM == 4){
-            // faz as atribuições para a viatura assim como os nomes de guerras
-            return 0;
+            //atribui a viat o cod e os nomes de guerras
+            printf("Quantidade de PM válido -- BOPE\n");
+            return 1;
         }
     }
     printf("Quantidade de Policial inválida\n");
-    return 3; //inválido
+    return 0; //inválido
 }
